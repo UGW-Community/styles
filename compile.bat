@@ -1,0 +1,1 @@
+sass ./community-theme/index.scss ./compiled/community-theme.css --style compressed

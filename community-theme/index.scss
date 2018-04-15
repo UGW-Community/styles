@@ -1,0 +1,41 @@
+@import './roles';
+@import './mixins';
+
+// Color Scheme: http://paletton.com/#uid=64j1k0kgYVn3A+MbfYQlBPppsE9
+
+$staffColor: #FD3439;
+$botColor: #29CA74;
+$modColor: #4AE491;
+$streamerColor: #6439C6;
+$regularColor: #8259E2;
+$memberColor: #C3ABFA;
+$rookieColor: #EDE5FE;
+
+$currentDjColor: #EDE5FE;
+$systemMessageColor: #FE5357;
+$mentionColor: #FFE653;
+$linkHoverColor: #FFF2A5;
+
+@include colorCurrentDjTag($currentDjColor);
+@include colorSystemMessages($systemMessageColor);
+@include colorMentions($mentionColor);
+@include colorLinksOnHover($linkHoverColor);
+
+@include colorRole(role(creator), $staffColor);
+@include colorRole(role(coOwner), $staffColor);
+@include colorRole(role(manager), $staffColor);
+@include colorRole(role(moderator), $modColor);
+@include colorRole(role(vip), $streamerColor);
+@include colorRole(role(residentDj), $regularColor);
+@include colorRole(role(dj), $memberColor);
+@include colorRole(role($noRole), $rookieColor);
+
+@include renameRole(role(vip), 'streamer');
+@include renameRole(role(residentDj), 'regular');
+@include renameRole(role(dj), 'member');
+@include renameRole(role($noRole), 'rookie');
+
+$kuroUserId: '5a096d0a58668b0100f8e1fe';
+
+@include colorUser($kuroUserId, $botColor);
+@include changeUserRole($kuroUserId, 'bot');

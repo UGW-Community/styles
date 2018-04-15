@@ -1,0 +1,33 @@
+$roles: (
+    none: '',
+    dj: 'dj',
+    residentDj: 'resident-dj',
+    vip: 'vip',
+    moderator: 'mod',
+    manager: 'manager',
+    coOwner: 'co-owner',
+    creator: 'creator',
+    admin: 'admin'
+);
+
+$noRole: 'none';
+
+@function role($name) {
+    @return map-get($roles, $name);
+}
+
+@function roleSelector($role) {
+    @if ($role == role($noRole)) {
+        $selector: '';
+
+        @each $role, $className in $roles {
+            @if ($role != $noRole) {
+                $selector: $selector + ':not(.#{$className})';
+            }
+        }
+
+        @return #{$selector};
+    }
+
+    @return '.#{$role}';
+}

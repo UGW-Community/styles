@@ -1,0 +1,87 @@
+@import './roles';
+
+@mixin colorRole($role, $color) {
+    #chat .chat-container .chat-messages .chat-main li#{roleSelector($role)} .username,
+    #chat .chat-container .chat-messages .chat-main li#{roleSelector($role)} .user-role,
+    #main_avatar_room #main-user-list-room #avatar-list li#{roleSelector($role)} .username,
+    #main_avatar_room #main-user-list-room #avatar-list li#{roleSelector($role)} .user-role,
+    #player-controller .left ul li.infoContainer .infoContainerInner .currentDJSong#{roleSelector($role)} .username {
+        color: $color;
+    }
+}
+
+@mixin colorUser($userId, $color) {
+    #chat .chat-container .chat-messages .chat-main li.user-#{$userId} .username,
+    #chat .chat-container .chat-messages .chat-main li.user-#{$userId} .user-role,
+    #main_avatar_room #main-user-list-room #avatar-list li.userid-#{$userId} .username,
+    #main_avatar_room #main-user-list-room #avatar-list li.userid-#{$userId} .user-role {
+        color: $color;
+    }
+}
+
+@mixin renameRole($role, $newName) {
+    #chat .chat-container .chat-messages .chat-main li#{roleSelector($role)} .activity-row .username .user-role {
+        font-size: 0;
+
+        &:after {
+            font-size: 12px;
+            content: $newName;
+        }
+    }
+
+    #main_avatar_room #main-user-list-room #avatar-list li#{roleSelector($role)} .user-role {
+        font-size: 0;
+
+        &:after {
+            font-size: 16px;
+            content: $newName;
+        }
+    }
+}
+
+@mixin changeUserRole($userId, $newRole) {
+    #chat .chat-container .chat-messages .chat-main li.user-#{$userId} .activity-row .username .user-role {
+        font-size: 0;
+
+        &:after {
+            font-size: 12px;
+            content: $newRole;
+        }
+    }
+
+    #main_avatar_room #main-user-list-room #avatar-list li.userid-#{$userId} .user-role {
+        font-size: 0;
+
+        &:after {
+            font-size: 16px;
+            content: $newRole;
+        }
+    }
+}
+
+@mixin colorCurrentDjTag($color) {
+    #chat .chat-container .chat-messages .chat-main li.currentDJ .username:before,
+    #main_avatar_room #main-user-list-room #avatar-list li.currentDJ .dubs:before {
+        color: $color;
+    }
+}
+
+@mixin colorSystemMessages($color) {
+    #chat .chat-container .chat-messages .chat-main li.system {
+        color: $color;
+    }
+}
+
+@mixin colorMentions($color) {
+    #chat .chat-container .chat-messages .chat-main li .activity-row .text .username-handle.mentioned {
+        color: $color;
+    }
+}
+
+@mixin colorLinksOnHover($color) {
+    #chat {
+        a:active, a:focus, a:hover {
+            color: $color;
+        }
+    }
+}
